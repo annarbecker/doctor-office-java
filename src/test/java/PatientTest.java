@@ -14,21 +14,21 @@ public class PatientTest {
 
   @Test
   public void equals_returnsTrueIfDescriptionsAreTheSame() {
-    Patient firstPatient = new Patient("John Smith", "1969-01-01");
-    Patient secondPatient = new Patient("John Smith", "1969-01-01");
+    Patient firstPatient = new Patient("John Smith", "1969-01-01", 1);
+    Patient secondPatient = new Patient("John Smith", "1969-01-01", 1);
     assertTrue(firstPatient.equals(secondPatient));
   }
 
   @Test
   public void save_returnsTrueIfDescriptionsAretheSame() {
-    Patient myPatient = new Patient("John Smith", "2000-01-01");
+    Patient myPatient = new Patient("John Smith", "2000-01-01", 1);
     myPatient.save();
     assertTrue(Patient.all().get(0).equals(myPatient));
   }
 
   @Test
   public void save_assignsIdToObject() {
-    Patient myPatient = new Patient("John Smith", "2000-01-01");
+    Patient myPatient = new Patient("John Smith", "2000-01-01", 1);
     myPatient.save();
     Patient savedPatient = Patient.all().get(0);
     assertEquals(myPatient.getId(), savedPatient.getId());
@@ -36,7 +36,7 @@ public class PatientTest {
 
   @Test
   public void find_findsPatientsInDatabase_true() {
-    Patient myPatient = new Patient("John Smith", "2000-01-01");
+    Patient myPatient = new Patient("John Smith", "2000-01-01", 1);
     myPatient.save();
     Patient savedPatient = Patient.find(myPatient.getId());
     assertTrue(myPatient.equals(savedPatient));

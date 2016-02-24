@@ -31,7 +31,7 @@ public class Doctor {
   }
 
   public static List<Doctor> all() {
-    String sql = "SELECT id, name, speciality, specialityId FROM doctors";
+    String sql = "SELECT id, name, speciality, specialityId FROM doctors ORDER BY NAME ASC";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Doctor.class);
     }

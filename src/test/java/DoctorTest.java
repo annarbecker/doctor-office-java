@@ -21,9 +21,13 @@ public class DoctorTest {
 
   @Test
   public void save_savesIntoDatabase_true() {
+    Doctor zDoctor = new Doctor("Zoe", "cardio", 1);
+    zDoctor.save();
     Doctor myDoctor = new Doctor("Jane", "cardio", 1);
     myDoctor.save();
-    assertTrue(Doctor.all().get(0).equals(myDoctor));
+    Doctor aDoctor = new Doctor("Anne", "cardio", 1);
+    aDoctor.save();
+    assertTrue(Doctor.all().get(1).equals(myDoctor));
   }
 
   @Test
